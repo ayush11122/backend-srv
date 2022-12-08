@@ -1,5 +1,5 @@
-const dotenv = require('dotenv');
 const express = require('express');
+const dotenv = require('dotenv');
 // const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const app = express();
@@ -7,9 +7,12 @@ const app = express();
 dotenv.config({path:'./config.env'});
 
 require('./db/connection');
+
+app.use(express.json());
+
 app.use(require('./router/auth'));
 
-// const User = require('./model/userSchema');
+const User = require('./model/userSchema');
 
 app.use(express.json());
 // app.use(cookieParser());
@@ -37,7 +40,7 @@ app.get('/Contactlist', (req, res) => {
 })
 
 app.get('/AddContact',(req, res) => {
-    res.send("hello world to Add Contact");
+    res.send("hello world to Add Contact from app.js");
 })
 
 // module.exports = router;
